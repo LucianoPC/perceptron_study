@@ -6,10 +6,10 @@ from numpy import dot, random
 
 class Neuron:
 
-    def __init__(self, eta, input_size, lambda_classification):
+    def __init__(self, eta, input_size, unit_step):
         self.eta = eta
         self.weights = random.rand(input_size)
-        self.unit_step = lambda_classification
+        self.unit_step = unit_step
 
     def train(self, training_data, times):
         for i in xrange(times):
