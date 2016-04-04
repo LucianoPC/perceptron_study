@@ -19,7 +19,7 @@ training_data = [
 
 eta = 0.2
 input_size = 3
-training_times = 1000000
+training_times = 100
 
 neuron_a = Neuron(eta, input_size, unit_step_a)
 neuron_a.train(training_data, training_times)
