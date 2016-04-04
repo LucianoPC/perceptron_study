@@ -1,7 +1,8 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from numpy import random
 from random import choice
-from numpy import dot, random
 
 
 class Neuron:
@@ -13,15 +14,9 @@ class Neuron:
 
     def train(self, training_data, times):
         for i in xrange(times):
-            inputs, expected = choice(training_data)
-            result = dot(self.weights, inputs)
-            error = expected - self.unit_step(result)
-            self.weights += self.eta * error * inputs
-
-    def get_result(self, inputs):
-        result = dot(inputs, self.weights)
-        return result
+            inputs, self.expected = choice(training_data)
+            self.error = self.expected - self.unit_step(inputs, self.weights)
+            self.weights += self.eta * self.error * inputs
 
     def get_unit_step(self, inputs):
-        result = self.get_result(inputs)
-        return self.unit_step(result)
+        return self.unit_step(inputs, self.weights)
